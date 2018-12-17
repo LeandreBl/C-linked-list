@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 
+#define REALLOC_POOL (5)
+
 typedef struct lnode_s {
 	void *data;
 	struct lnode_s *next;
@@ -19,11 +21,13 @@ typedef struct llinked_list_s {
 } llist_t;
 
 int llist_create(llist_t *list, size_t default_len, void (* default_destructor)(void *));
-int llist_resize(llist_t *list, size_t new_size);
+int llist_reserve(llist_t *list, size_t reserve_size);
+int llist_shrink_to_fit(llist_t *list);
 void llist_destroy(llist_t *list);
 
 void llist_clear(llist_t *list);
 void llist_erase(llist_t *list, void *data_to_delete);
+void llist_remove(llist_t *list, lnode_t *node);
 
 int llist_insert(llist_t *list, void *new_item, size_t position);
 void llist_erase_at(llist_t *list, size_t position);

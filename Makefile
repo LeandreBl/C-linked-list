@@ -10,6 +10,10 @@ NAME		= libllist.so
 CC		= gcc
 
 SRCS		= src/list.c
+SRCS		+= src/display.c
+SRCS		+= src/pop_unused_node.c
+SRCS		+= src/remove.c
+SRCS		+= src/shrink.c
 SRCS		+= src/swap.c
 SRCS		+= src/push_front.c
 SRCS		+= src/push_back.c
@@ -18,7 +22,7 @@ SRCS		+= src/pop_back.c
 SRCS		+= src/erase_at.c
 SRCS		+= src/erase.c
 SRCS		+= src/insert.c
-SRCS		+= src/resize.c
+SRCS		+= src/reserve.c
 SRCS		+= src/clear.c
 
 TESTS_SRCS	:= $(SRCS)
@@ -56,6 +60,15 @@ tests_run: $(TESTS_OBJS)
 	@$(RM) $@
 	@$(RM) $(TESTS_OBJS)
 
+val_run: CFLAGS += -g3
+val_run: $(TESTS_OBJS)
+	@$ $(CC) -lcriterion $(TESTS_OBJS) -o $@
+	@echo "$(CC) -lcriterion $(TESTS_OBJS) -o $@ \
+	["$(GREEN)"LINKING OK"$(NO_COLOR)"]"
+	valgrind --trace-children=yes --quiet ./$@
+	@$(RM) $@
+	@$(RM) $(TESTS_OBJS)
+
 debug: CFLAGS += -g3
 debug: re
 
@@ -70,7 +83,7 @@ re: fclean all
 install: re
 	@cp $(NAME) /usr/lib/$(NAME) 2> /dev/null || \
 	printf "\033[1m\033[31mError : try sudo make install\033[0m\n" && \
-	cp include/*.h /usr/include/ 2> /dev/null && \
+	cp include/llist.h /usr/include/ 2> /dev/null && \
 	printf "\033[1m\033[32mLibrary successfull installed !\033[0m\n"
 
-.PHONY: all clean fclean re tests_run debug install
+.PHONY: all clean fclean re tests_run val_run debug install

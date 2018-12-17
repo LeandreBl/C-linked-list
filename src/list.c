@@ -36,6 +36,7 @@ int llist_create(llist_t *list, size_t default_len, void (* default_destructor)(
 		--default_len;
 	}
 	node->next = NULL;
+	node->data = NULL;
 	return (0);
 }
 
@@ -46,7 +47,7 @@ void llist_destroy(llist_t *list)
 
 	while (node != NULL) {
 		if (list->destructor != NULL)
-			list->destructor(node);
+			list->destructor(node->data);
 		prev = node;
 		node = node->next;
 		free(prev);
