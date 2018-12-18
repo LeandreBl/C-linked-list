@@ -1,6 +1,6 @@
 #include "llist.h"
 
-void llist_display(llist_t *list, void (* displayer)(void *data))
+void llist_display(llist_t *list, void (*displayer)(void *data))
 {
 	lnode_t *node = list->first;
 
