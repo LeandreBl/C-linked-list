@@ -7,6 +7,8 @@ static int add_unused_node(llist_t *list)
 {
     lnode_t *new_node = malloc(sizeof(lnode_t));
 
+    if (new_node == NULL)
+        return (-1);
     if (list->unused != NULL) {
         list->unused->prev = new_node;
         if (list->unused->prev == NULL)
