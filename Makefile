@@ -78,7 +78,7 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME:.so=.a)
 
 re: fclean all
 
