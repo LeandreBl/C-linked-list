@@ -9,6 +9,8 @@ NAME		= libllist.so
 
 CC		= gcc
 
+ARCHIVER	= ar
+
 SRCS		= src/list.c
 SRCS		+= src/display.c
 SRCS		+= src/pop_unused_node.c
@@ -86,4 +88,7 @@ install: re
 	cp include/llist.h /usr/include/ 2> /dev/null && \
 	printf "\033[1m\033[32mLibrary successfull installed !\033[0m\n"
 
-.PHONY: all clean fclean re tests_run val_run debug install
+static: $(OBJS)
+	$(ARCHIVER) rc $(NAME:.so=.a) $(OBJS)
+
+.PHONY: all clean fclean re tests_run val_run debug install static
