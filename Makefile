@@ -12,6 +12,7 @@ CC		= gcc
 ARCHIVER	= ar
 
 SRCS		= src/list.c
+SRCS		+= src/get.c
 SRCS		+= src/get_node_at.c
 SRCS		+= src/display.c
 SRCS		+= src/pop_unused_node.c
