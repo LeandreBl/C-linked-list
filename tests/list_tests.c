@@ -409,10 +409,9 @@ Test(massive_tests, mutliple_tests)
 		free(data);
 	}
 	cr_assert(list.first == NULL);
-	cr_assert(list.last == NULL);
 	cr_assert(list.size == 0);
 	cr_assert(list.unused != NULL);
-	cr_assert(list.unused_size == 1000);
+	cr_assert(list.unused_size == 1005);
 	llist_destroy(&list);
 }
 

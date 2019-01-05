@@ -1,4 +1,6 @@
 .vscode/*
+tests_run
+val_run
 # Prerequisites
 *.d
 
