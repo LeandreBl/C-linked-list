@@ -15,9 +15,7 @@ int llist_insert(llist_t *list, void *new_item, size_t position)
   if (new_node == NULL)
     return (-1);
   new_node->data = new_item;
-  node = list->first;
-  for (size_t i = 0; i < position - 1; ++i)
-    node = node->next;
+  node = llist_get_node_at(list, position - 1);
   new_node->prev = node;
   new_node->next = node->next;
   node->next->prev = new_node;

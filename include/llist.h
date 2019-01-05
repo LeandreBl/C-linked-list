@@ -40,4 +40,6 @@ int llist_push_front(llist_t *list, void *new_item);
 
 void llist_swap(llist_t *l1, llist_t *l2);
 
+void *llist_get(llist_t *list, size_t position); /* TODO */
+
 #endif /* !_LLIST_H_ */

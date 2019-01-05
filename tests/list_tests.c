@@ -415,3 +415,21 @@ Test(massive_tests, mutliple_tests)
 	cr_assert(list.unused_size == 1000);
 	llist_destroy(&list);
 }
+
+Test(get_node_at, simple_test)
+{
+  llist_t list;
+
+  llist_create(&list, 10, free);
+  for (char i = 'a'; i < 'j'; ++i) {
+    char *str = calloc(2, sizeof(char));
+    cr_assert(str != NULL);
+    str[0] = i;
+    llist_push_back(&list, str);
+  }
+  for (int i = 'a'; i < 'j'; ++i) {
+    lnode_t *node = llist_get_node_at(&list, i - 'a');
+    char *str = node->data;
+    cr_assert(str[0] == i);
+  }
+}
