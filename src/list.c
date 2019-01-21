@@ -13,8 +13,7 @@ static void default_initializer(llist_t *list, size_t default_len,
   list->destructor = default_destructor;
 }
 
-int llist_create(llist_t *list, size_t default_len,
-                 void (*default_destructor)(void *))
+int llist_create(llist_t *list, size_t default_len, void (*default_destructor)(void *))
 {
   lnode_t *node;
 
