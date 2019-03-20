@@ -20,7 +20,7 @@ static lnode_t *get_from_first(llist_t *list, size_t position)
   return (node);
 }
 
-lnode_t *llist_get_node_at(llist_t *list, size_t position)
+__attribute__ ((visibility ("hidden"))) lnode_t *llist_get_node_at(llist_t *list, size_t position)
 {
   if (position >= list->size)
     return (NULL);

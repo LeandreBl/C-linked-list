@@ -1,6 +1,6 @@
 #include "llist.h"
 
-void llist_move_to_unused_node(llist_t *list, lnode_t *node)
+__attribute__ ((visibility ("hidden"))) void llist_move_to_unused_node(llist_t *list, lnode_t *node)
 {
   node->prev = NULL;
   node->next = list->unused;

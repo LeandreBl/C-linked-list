@@ -1,6 +1,6 @@
 #include "llist.h"
 
-lnode_t *llist_pop_unused_node(llist_t *list)
+__attribute__ ((visibility ("hidden"))) lnode_t *llist_pop_unused_node(llist_t *list)
 {
   lnode_t *node;
 
