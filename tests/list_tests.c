@@ -7,9 +7,8 @@ void displayer(void *data)
 {
 	lnode_t *node = data;
 
-	cr_log(CR_LOG_ERROR, "{%p <- %p[%zu] -> %p}\n",
-		(void *)node->prev, (void *)node, *(size_t *)node->data,
-		(void *)node->next);
+	cr_log(CR_LOG_ERROR, "{%p <- %p[%zu] -> %p}\n", (void *)node->prev, (void *)node,
+	       *(size_t *)node->data, (void *)node->next);
 }
 
 Test(list_create, items5)
@@ -189,7 +188,8 @@ Test(erase, default_erase)
 	llist_t list;
 	lnode_t *node;
 	char *s;
-	char *temp;;
+	char *temp;
+	;
 
 	llist_create(&list, 10, free);
 	for (int i = 0; i < 10; ++i) {
@@ -417,18 +417,18 @@ Test(massive_tests, mutliple_tests)
 
 Test(get_node_at, simple_test)
 {
-  llist_t list;
+	llist_t list;
 
-  llist_create(&list, 10, free);
-  for (char i = 'a'; i < 'j'; ++i) {
-    char *str = calloc(2, sizeof(char));
-    cr_assert(str != NULL);
-    str[0] = i;
-    llist_push_back(&list, str);
-  }
-  for (int i = 'a'; i < 'j'; ++i) {
-    lnode_t *node = llist_get_node_at(&list, i - 'a');
-    char *str = node->data;
-    cr_assert(str[0] == i);
-  }
+	llist_create(&list, 10, free);
+	for (char i = 'a'; i < 'j'; ++i) {
+		char *str = calloc(2, sizeof(char));
+		cr_assert(str != NULL);
+		str[0] = i;
+		llist_push_back(&list, str);
+	}
+	for (int i = 'a'; i < 'j'; ++i) {
+		lnode_t *node = llist_get_node_at(&list, i - 'a');
+		char *str = node->data;
+		cr_assert(str[0] == i);
+	}
 }

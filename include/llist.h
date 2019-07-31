@@ -1,10 +1,10 @@
 #ifndef _LLIST_H_
-# define _LLIST_H_
+#define _LLIST_H_
 
-# include <stddef.h>
-# include <sys/cdefs.h>
+#include <stddef.h>
+#include <sys/cdefs.h>
 
-# define REALLOC_POOL (5)
+#define REALLOC_POOL (5)
 
 typedef struct lnode_s {
 	void *data;
@@ -18,10 +18,11 @@ typedef struct llinked_list_s {
 	struct lnode_s *first;
 	struct lnode_s *last;
 	struct lnode_s *unused;
-	void (* destructor)(void *);
+	void (*destructor)(void *);
 } llist_t;
 
-int llist_create(llist_t *list, size_t default_len, void (* default_destructor)(void *)) __THROW __nonnull((1));
+int llist_create(llist_t *list, size_t default_len, void (*default_destructor)(void *)) __THROW
+	__nonnull((1));
 int llist_reserve(llist_t *list, size_t reserve_size) __THROW __nonnull((1));
 int llist_shrink_to_fit(llist_t *list) __THROW __nonnull((1));
 void llist_destroy(llist_t *list) __THROW __nonnull((1));
